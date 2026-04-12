@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+      background: rgba(10,10,10,0.6);
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1rem;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    header a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    header a:hover {
+      color: #fff;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: 400;
+      max-width: 800px;
+      line-height: 1.3;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    .gallery {
+      column-count: 3;
+      column-gap: 10px;
+      padding: 100px 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      filter: grayscale(100%) brightness(0.9);
+      transition: 0.5s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      filter: grayscale(0%) brightness(1);
+      transform: scale(1.02);
+    }
+
+    .about {
+      padding: 120px 20px;
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .about h3 {
+      margin-bottom: 20px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .about p {
+      color: #aaa;
+      line-height: 1.7;
+    }
+
+    footer {
+      padding: 60px 20px;
+      text-align: center;
+      color: #555;
+      font-size: 0.8rem;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Espen Andersson</h1>
+  <div>
+    <a href="#about">About</a>
+    <a href="mailto:anderssonespen@yahoo.com">Contact</a>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>Ich halte Momente fest, die man nicht wiederholen kann.</h2>
+</section>
+
+<section class="gallery">
+  <img src="bild1.jpg">
+  <img src="bild2.jpg">
+  <img src="bild3.jpg">
+  <img src="bild4.jpg">
+  <img src="bild5.jpg">
+  <img src="bild6.jpg">
+</section>
+
+<section class="about" id="about">
+  <h3>Über mich</h3>
+  <p>
+    Ich fotografiere nicht für Perfektion, sondern für das, was echt ist.
+    Licht, Bewegung und Timing sind für mich wichtiger als Inszenierung.
+    <br><br>
+    Wenn du mit mir arbeiten willst, schreib mir.
+  </p>
+</section>
+
+<footer>
+  © 2026 Espen Andersson
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+</div>
+
+<script>
+  const images = document.querySelectorAll(".gallery img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
+    });
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+</script>
+
+</body>
+</html>
